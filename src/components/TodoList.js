@@ -3,16 +3,17 @@ const TodoList=()=>{
  let items=[
   {text:"Learn Js", important:true},
   {text:"Learn React", important:false},
-  {text:"Learn TYpeScript", important:true},
-  {text:"Learn Python", important:true}
+  {text:"Learn TypeScript", important:true},
+  {text:"Learn Python", important:true},
+  {text:"Learn Node Js", important:false}
  ]
+
+
+ const data=items.map(({text,important})=>{
+  return(<TodoListItem text={text} important={important}/>)
+ });
  return (
-  <ul>
-  <TodoListItem text={items[0].text} important={items[0].important}/>
-  <TodoListItem text={items[1].text} important={items[1].important}/>
-  <TodoListItem text={items[2].text} important={items[2].important}/>
-  <TodoListItem text={items[3].text} important={items[3].important}/>
-  </ul>)
+  <ul>{data}</ul>)
 }
 
 export default TodoList
