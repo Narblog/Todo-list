@@ -2,9 +2,9 @@ import TodoListItem from "./TodoListItem"
 const TodoList=()=>{
  let items=[
   {text:"Learn Js", important:true},
-  {test:"Learn React", important:false},
-  {test:"Learn TYpeScript", important:true},
-  {test:"Learn Python", important:true}
+  {text:"Learn React", important:false},
+  {text:"Learn TYpeScript", important:true},
+  {text:"Learn Python", important:true}
  ]
  return (
   <ul>
