@@ -1,5 +1,5 @@
-const ShowDate=()=>{
-    return <small>Updating new: 23.10.2023</small>
+const ShowDate=({text})=>{
+    return <time>Updating new: {text}</time>
 }
 
 export default ShowDate
