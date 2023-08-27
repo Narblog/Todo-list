@@ -1,5 +1,12 @@
+import ShowDate from './ShowDate'
 const Header=()=>{
-    return <h1>Todo List</h1>
+    return (
+    <div >
+      <h1>Todo List</h1>
+      <ShowDate/>
+    </div>
+    )
+    
   }
 
   export default Header
