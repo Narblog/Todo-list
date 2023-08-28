@@ -1,24 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client'
-import Header from './components/Header'
-import Search from './components/Search'
-import TodoList from './components/TodoList';
-import AddTodo from './components/AddTodo';
+import Header from './components/Header/Header'
+import Search from './components/Search/Search'
+import TodoList from './components/TodoList/TodoList';
+import AddItem from './components/AddItem/AddItem';
+import "./index.css"
 
+const App = () => {
 
-const App=()=>{
-  
   return (
-    <div>
-       <Header />
-       <Search />
-       <TodoList />
-       <AddTodo />
-    
-     
-  </div>
+    <div className='app'>
+      <Header />
+      <Search />
+      <TodoList />
+      <AddItem />
+
+
+    </div>
   )
 }
-const root=ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />)
 export default App

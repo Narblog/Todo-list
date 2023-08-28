@@ -1,0 +1,29 @@
+.additem{
+    padding:15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.additem input{
+    border-radius:50px;
+    border:2px solid black;
+    font-size:20px;
+    padding:5px;
+}
+.additem button{
+    width:90px;
+    margin-top:10px;
+    font-size:19px;
+    border-radius:15px 0 15px 0;
+    background-color: rgb(33, 33, 103);
+    color:#fff;
+
+}
+.additem button:hover{
+    font-size:22px;
+    border-radius:0 15px 0 15px;
+    background-color: rgb(16, 94, 230);
+}
+.additem input:hover{
+    background-color: rgb(227, 225, 224);
+}
