@@ -1,7 +1,5 @@
 const Button=({text,color})=>{
-    const sytle={
-        color:"red"
-    }
-    return <button style={sytle} >{text}</button>
+ 
+    return <button style={{color}} >{text}</button>
 }
 export default Button

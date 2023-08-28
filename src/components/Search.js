@@ -5,7 +5,7 @@ const Search=()=>{
   <div>
  
     <input type="text" placeholder='Type text for search...'/>
-    <Button text="Button" />
+    <Button text="Button" color="red"/>
     </div>
     )
   }
