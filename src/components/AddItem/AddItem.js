@@ -1,12 +1,11 @@
-import Button from "../Button/Button"
-import "./additem.css"
+import "./add-item.css"
 const AddItem = () => {
   return (
     <div className="additem">
-
-      <input type="text" placeholder='Add item...' />
-      <Button text="Add item" />
+      <input type="text" placeholder="Item text..." />
+      <button>Add item</button>
     </div>
   )
 }
-export default AddItem
+
+export default AddItem;

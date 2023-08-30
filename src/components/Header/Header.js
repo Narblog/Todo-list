@@ -1,11 +1,16 @@
-import "./header.css"
-const Header=()=>{
-    return (
-    <div className="header" >
-      <h1>My Todo List</h1>
-    </div>
-    )
-    
-  }
+import './header.css';
+import IconsInfo from '../IconsInfo/IconsInfo';
 
-  export default Header
+const Header = () => {
+  return (
+    <div className='header'>
+      <h1>My Todo List</h1> 
+<IconsInfo/>
+    
+     
+      
+    </div>
+  );
+}
+
+export default Header;
