@@ -9,7 +9,7 @@ class Header extends Component {
     return (
       <div className='header'>
         <h1>My Todo List</h1>
-        <IconsInfo />
+      
         <span className='header-info'>
           <span className='header-done'> Done:{done}</span>
           <span className='header-done'> Important:{important}</span>
