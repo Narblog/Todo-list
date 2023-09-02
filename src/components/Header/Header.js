@@ -1,7 +1,5 @@
 import './header.css';
-import IconsInfo from '../IconsInfo';
 import { Component } from "react"
-
 
 class Header extends Component {
   render() {
