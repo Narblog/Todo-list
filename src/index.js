@@ -21,8 +21,7 @@ class App extends Component {
   }
 
   handleSearch = (text) => {
-const value=  this.state.items
-console.log(value)
+const value=this.state.items
     const results = value.filter(item => {
       return item.text.toUpperCase().includes(text)
     
