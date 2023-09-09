@@ -19,15 +19,7 @@ class App extends Component {
   
   }
 
-  editItem=(id)=>{
-   
-      const newEditItem=this.state.items.find((el)=> el.id===id)
-    
-      return({
-        
-      })
-  }
-
+ 
 
   onDone=(id)=>{
     this.setState({
@@ -70,7 +62,7 @@ class App extends Component {
       <div className="app">
         <Header done={8} important={23} />
         <Search />
-        <TodoList items={this.state.items} onDone={this.onDone} deletItem={this.deletItem} editItem={this.editItem}  />
+        <TodoList items={this.state.items} onDone={this.onDone} deletItem={this.deletItem} />
         <AddItem onAddItem={this.onAddItem} />
       </div>
     );

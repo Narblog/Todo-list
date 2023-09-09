@@ -44,3 +44,33 @@
 .item-text:hover{
     cursor: pointer;
 }
+.list-item-edit-input{
+    outline: none;
+    border:1px solid #ccc;
+    border-radius:5px;
+    padding:3px 8px;
+    font-size:12px;
+    color:#303030;
+}
+
+.item-input-wrapper {
+ display:inline-block;
+ position: relative;
+ top:-5px;
+    
+}
+.item-input-wrapper .item-input-message{
+    color:#ff1919;
+    display: block;
+    font-size:8px;
+    margin-left:1px
+
+}
+.list-item-edit-input {
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 3px 8px;
+    font-size: 12px;
+    color: #303030;
+}

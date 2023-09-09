@@ -1,6 +1,8 @@
 import { Component } from 'react';
-import { FaTrash, FaInfo, FaCheck,FaPenToSquare } from 'react-icons/fa6';
+import { FaTrash, FaInfo, FaCheck, FaPenToSquare, FaCircleCheck } from 'react-icons/fa6';
 import './todo-list-item.css';
+import {validateInput} from "../../../utils/validator"
+
 
 
 class TodoListItem extends Component {
@@ -8,67 +10,111 @@ class TodoListItem extends Component {
     isDone: false,
     isImportant: this.props.important,
     isValue: "",
-    isEdit:false
+    isEdit: false,
+    text: this.props.text,
+    isError:false
   }
-  onDone=(id)=>{
-    this.setState({
-      isDone: !this.state.isDone
+
+
+  onDone = () => {
+    this.setState(({ isDone }) => {
+      return {
+        isDone: !isDone
+      }
     })
   }
-  onImportant = () => {
+
+    onImportant = () => {
+      this.setState(({ isImportant }) => {
+        return {
+          isImportant: !isImportant
+        }
+      })
+    }
+    
+    onDelete = () => {
+      this.props.deletItem(this.props.id)
+    }
+
+    onEdit = () => {
+      this.setState(({ isEdit,text,isError}) => {
+     
+        if(isEdit && !validateInput(text)){
+          return{
+            isError:true
+          }
+        }
+        
+        return {
+          isEdit: !isEdit,
+          isError:false
+        }
+      })
+    
+
+  };
+  onInputEdit = (event) => {
     this.setState({
-      isImportant: !this.state.isImportant
+      text: event.target.value
     });
   }
-  onDelete=()=>{
-    this.props.deletItem(this.props.id)
-  }
-  onEdit=()=>{
-    this.props.editItem(this.props.id)
-    this.setState({
-      isEdit:!this.state.isEdit
-       })
-      
-
-       
-    
- };
-
-
-  render() {
-    const { text } = this.props;
-    const { isDone, isImportant } = this.state;
-
-    const textStyle = {
-      textDecoration: isDone ? 'line-through' : 'none',
-      color: isDone ? '#aaa' : (isImportant ? 'red': 'black'),
-      fontWeight: isDone ? "normal": (isImportant ? "bold" : "normal"),
-
-    }
   
-    return (
-      <li className='list-item'>
-        <span className='item-text' style={textStyle} onClick={ this.onDone }>
-          {text}
-        </span>
-  
-        <span className='item-btns'>
-        <button className='item-btn-edit' onClick={this.onEdit} ><FaPenToSquare /></button>
-        {
-          this.state.isEdit ? <input defaultValue={text}  />  : "" 
-          
-         
-        }
-       
-          <button className='item-btn-done' onClick={ this.onDone }><FaCheck /></button>
-          <button className='item-btn-important' onClick={ this.onImportant }><FaInfo /></button>
-          <button className='item-btn-remove' onClick={this.onDelete}><FaTrash /></button>
-        </span>
-      </li>
-    );
+
+render() {
+
+  const { isDone, isImportant, isEdit,isError, text } = this.state;
+
+  const textStyle = {
+    textDecoration: isDone ? 'line-through' : 'none',
+    color: isDone ? '#aaa' : (isImportant ? 'red' : 'black'),
+    fontWeight: isDone ? "normal" : (isImportant ? "bold" : "normal"),
+
   }
+
+  const inputStyle={
+    borderColor:isError? "red" : "#ccc"
+  }
+
+  return (
+    <li className='list-item'>
+     
+      {
+        isEdit ? (
+        <div className='item-input-wrapper'> 
+            <input
+            type="text"
+            className='list-item-edit-input'
+            style={inputStyle}
+            value={text}
+            onChange={this.onInputEdit}
+
+          />
+          {
+            isError?    <span className='item-input-message'>Min length is greate 2</span>:null
+          }
+       
+        </div>
+        ) : (
+          <span className='item-text' style={textStyle} onClick={this.onDone}>
+            {text}
+          </span>
+        )
+      }
+
+      <span className='item-btns'>
+        <button className='item-btn-edit' onClick={this.onEdit} >
+          {isEdit ? <FaCircleCheck /> : <FaPenToSquare />}</button>
+
+        <button className='item-btn-done' onClick={this.onDone}><FaCheck /></button>
+        <button className='item-btn-important' onClick={this.onImportant}><FaInfo /></button>
+        <button className='item-btn-remove' onClick={this.onDelete}><FaTrash /></button>
+      </span>
+    </li>
+  );
 }
-  
+  }
+
+
 export default TodoListItem;
 /*
 const TodoListItem = ({ text, important }) => {
@@ -90,4 +136,4 @@ const TodoListItem = ({ text, important }) => {
     </li>
   );
 }*/
-  
+
