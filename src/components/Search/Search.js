@@ -3,10 +3,13 @@ import './search.css';
 
 
  class Search extends Component{
+  handleSearch = ({text}) => {
+   this.props.handleSearch({text})
+  }
   render(){
     return (
       <div className='search'>
-        <input type="text" placeholder="Type text for search..." onClick={this.handleSearch} />
+        <input type="text" placeholder="Type text for search..." onChange={this.handleSearch} />
         <button className='search-btn-all'>All</button>
         <button className='search-btn-done'>Done</button>
         <button className='search-btn-important'>Important</button>

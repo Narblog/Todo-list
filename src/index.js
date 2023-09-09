@@ -15,46 +15,51 @@ class App extends Component {
       { text: "Learn React", important: false, id: 3 },
       { text: "Learn TypeScript", important: true, id: 4 },
       { text: "Learn Node.js", important: false, id: 5 },
-    ],
-  
+
+    ]
+
   }
 
-  handleSearch = (text) => {  
-   this.state.items.filter(item => {
-      return item.text.toLowerCase().includes(text)
-    }
-    ) 
-   }
-   
- 
+  handleSearch = (text) => {
+const value=  this.state.items
+console.log(value)
+    const results = value.filter(item => {
+      return item.text.toUpperCase().includes(text)
+    
+
+    })
+
+    console.log(results)
+  }
 
 
 
 
-  onDone=(id)=>{
+
+  onDone = (id) => {
     this.setState({
       isDone: !this.state.isDone
     })
   }
-  
-  deletItem=(id)=>{
-    this.handleSearch("hello")
-    this.setState(({items})=>{
-      const idx=items.findIndex((el)=>el.id===id)
-      
+
+  deletItem = (id) => {
+
+    this.setState(({ items }) => {
+      const idx = items.findIndex((el) => el.id === id)
+
 
       return {
-        items:[
-          ...items.slice(0,idx),
-          ...items.slice(idx+1)
+        items: [
+          ...items.slice(0, idx),
+          ...items.slice(idx + 1)
         ]
       }
     })
   }
 
- 
+
   onAddItem = (text) => {
-   const id=this.state.items.length? this.state.items[this.state.items.length - 1].id + 1 : 1
+    const id = this.state.items.length ? this.state.items[this.state.items.length - 1].id + 1 : 1
     const newItem = {
       text,
       important: false,
@@ -68,12 +73,12 @@ class App extends Component {
     })
   }
 
-  render () {
-   
+  render() {
+
     return (
       <div className="app">
         <Header done={8} important={23} />
-        <Search  handleSearch={this.handleSearch}/>
+        <Search handleSearch={this.handleSearch} />
         <TodoList items={this.state.items} onDone={this.onDone} deletItem={this.deletItem} />
         <AddItem onAddItem={this.onAddItem} />
       </div>
