@@ -19,7 +19,17 @@ class App extends Component {
   
   }
 
+  handleSearch = (text) => {  
+   this.state.items.filter(item => {
+      return item.text.toLowerCase().includes(text)
+    }
+    ) 
+   }
+   
  
+
+
+
 
   onDone=(id)=>{
     this.setState({
@@ -28,6 +38,7 @@ class App extends Component {
   }
   
   deletItem=(id)=>{
+    this.handleSearch("hello")
     this.setState(({items})=>{
       const idx=items.findIndex((el)=>el.id===id)
       
@@ -58,10 +69,11 @@ class App extends Component {
   }
 
   render () {
+   
     return (
       <div className="app">
         <Header done={8} important={23} />
-        <Search />
+        <Search  handleSearch={this.handleSearch}/>
         <TodoList items={this.state.items} onDone={this.onDone} deletItem={this.deletItem} />
         <AddItem onAddItem={this.onAddItem} />
       </div>

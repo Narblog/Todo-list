@@ -8,7 +8,7 @@ class AddItem extends Component {
   state = {
     inputValue: '',
     isError:false,
-    text:this.props.text
+  
   }
 
   onInputChange = (event) => {
@@ -18,16 +18,16 @@ class AddItem extends Component {
   }
 
   onBtnClick = (text) => {
+      if(!validateInput(this.state.inputValue)){
+
+        this.setState({isError:true})
+        return
+
+      }
+      this.setState({isError:false})
     this.props.onAddItem(this.state.inputValue);
     this.setState({inputValue: ''})
-    if( !validateInput(text)){
-      return{
-        isError:true
-      }
-    }
-    return {
-      isError:false
-    }
+   
 
 
     
@@ -38,16 +38,16 @@ class AddItem extends Component {
     return (
       <div className='additem'>
 
-
+{
+            isError ?  <ErrorMessage message="Error message " type="error"/>:null
+         }
         <input
         type="text"
         value={this.state.inputValue}
         placeholder="Item text..."
         onChange={this.onInputChange}
             />
-          {
-            isError ?  <ErrorMessage message="Error message " type="error"/>:null
-         }
+         
         <button onClick={this.onBtnClick}>Add item</button>
       </div>
     )
