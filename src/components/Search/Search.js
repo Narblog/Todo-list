@@ -2,7 +2,7 @@ import { Component } from 'react';
 import './search.css';
 
 
-class Search extends Component{
+ class Search extends Component{
   render(){
     return (
       <div className='search'>
@@ -14,7 +14,7 @@ class Search extends Component{
     );
   }
 }
-
+export default Search
 /*
 const Search = () => {
   return (
@@ -27,4 +27,3 @@ const Search = () => {
   );
 }*/
 
-export default Search;
