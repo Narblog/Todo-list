@@ -1,44 +1,50 @@
 import { Component } from 'react';
+
 import './search.css';
 
+export default class Search extends Component {
 
-class Search extends Component {
   state = {
-    text: this.props.text,
+    term: ''
   }
-  handleSearch = (text) => {
-    this.props.handleSearch(this.props.text)
+
+  buttons = [
+    { name: 'all', text: 'All', className: 'search-btn-all' },
+    { name: 'done', text: 'Done', className: 'search-btn-done' },
+    { name: 'important', text: 'Important', className: 'search-btn-important' }
+  ]
+
+  onSearchChange = (e) => {
+    this.setState({
+      term: e.target.value
+    })
+
+    this.props.onSearch(e.target.value)
   }
-  handleDone=()=>{
-    this.props.handleDone(this.props.id)
-  }
- handleImportant=()=>{
-  this.props.handleImportant(this.props.id)
- }
+
   render() {
     return (
       <div className='search'>
         <input
           type="text"
+          value={this.state.term}
+          onChange={this.onSearchChange}
           placeholder="Type text for search..."
-          onChange={(e)=> this.handleSearch(e.target.value)} />
-        <button className='search-btn-all'>All</button>
-        <button className='search-btn-done' onClick={this.handleDone}>Done</button>
-        <button className='search-btn-important' onClick={this.handleImportant}>Important</button>
+        />
+        {
+          this.buttons.map(({ name, text, className }) => {
+            return (
+              <button
+                className={className}
+                key={name}
+                onClick={() => { this.props.onFilterChange(name) } }
+              >
+                {text}
+              </button>
+            )
+          })
+        }
       </div>
     );
   }
 }
-export default Search
-/*
-const Search = () => {
-  return (
-    <div className='search'>
-      <input type="text" placeholder="Type text for search..." />
-      <button className='search-btn-all'>All</button>
-      <button className='search-btn-done'>Done</button>
-      <button className='search-btn-important'>Important</button>
-    </div>
-  );
-}*/
-

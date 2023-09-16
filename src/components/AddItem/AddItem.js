@@ -1,14 +1,14 @@
 import { Component } from 'react';
-import ErrorMessage from "../ErrorMessage"
+import ErrorMessage from '../ErrorMessage'
+import { validateInput } from '../../utils/validator'
+
 import './add-item.css';
-import { validateInput } from '../../utils/validator';
 
 class AddItem extends Component {
 
   state = {
     inputValue: '',
-    isError:false,
-  
+    isError: false
   }
 
   onInputChange = (event) => {
@@ -17,37 +17,33 @@ class AddItem extends Component {
     })
   }
 
-  onBtnClick = (text) => {
-      if(!validateInput(this.state.inputValue)){
+  onBtnClick = () => {
+    if (!validateInput(this.state.inputValue)) {
+      this.setState({ isError: true })
+      return
+    }
 
-        this.setState({isError:true})
-        return
-
-      }
-      this.setState({isError:false})
+    this.setState({ isError: false })
     this.props.onAddItem(this.state.inputValue);
     this.setState({inputValue: ''})
-   
-
-
-    
   }
 
   render() {
-    const {isError}=this.state
+    const { isError } = this.state;
+
     return (
       <div className='additem'>
 
-{
-            isError ?  <ErrorMessage message="Error message " type="error"/>:null
-         }
+        {
+          isError ? <ErrorMessage message="Error message text" type="error" /> : null
+        }
+
         <input
-        type="text"
-        value={this.state.inputValue}
-        placeholder="Item text..."
-        onChange={this.onInputChange}
-            />
-         
+          type="text"
+          value={this.state.inputValue}
+          placeholder="Item text..."
+          onChange={this.onInputChange}
+        />
         <button onClick={this.onBtnClick}>Add item</button>
       </div>
     )
@@ -55,4 +51,3 @@ class AddItem extends Component {
 }
 
 export default AddItem;
-
